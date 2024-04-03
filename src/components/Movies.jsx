@@ -9,13 +9,15 @@ const Movies = () => {
     // Fetch movies data
     useEffect( () => {
         
-        axios.get('https://api.themoviedb.org/3/movie/popular?api_key=a3cb1aced3ebce119470f10ef5233ba1&language=en-US&page=1').then(function(res){
+        axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`).then(function(res){
             setMovies(res.data.results);
         });
 
         console.log(movies);
 
     }, []);
+
+    console.log();
 
   return (
     <div className="p-5">
