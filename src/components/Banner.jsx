@@ -1,4 +1,16 @@
+// import { useEffect } from "react"
+// import axios from 'axios'
+
 const Banner = () => {
+
+    // useEffect(() => {
+
+    //     axios.get(`https://api.themoviedb.org/3/tv/top_rated?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`).then(function(res){
+    //         console.log(res);
+    //     });
+
+    // }, []);
+
   return (
     <div 
         className="h-[20vh] md:h-[70vh] bg-cover bg-center flex items-end"

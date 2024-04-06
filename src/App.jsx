@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Movies from "./components/Movies";
@@ -8,6 +9,29 @@ import Banner from "./components/Banner";
 import { useEffect, useState } from "react";
 
 function App() {
+
+  let [watchList, setWatchList] = useState([]);
+
+
+  let handleAddToWatchlist = (movieObj) => {
+    let newWatchlist = [...watchList, movieObj];
+
+    localStorage.setItem('myWatchList', JSON.stringify(newWatchlist));
+
+    setWatchList(newWatchlist);
+    // console.log(newWatchlist);
+  };
+
+  let handleRemoveFromWatchlist = (movieObj) => {
+
+    let filteredMovies = watchList.filter((movie) => movie.id !== movieObj.id);
+
+    localStorage.setItem('myWatchList', JSON.stringify(filteredMovies));
+    setWatchList(filteredMovies);
+
+    // console.log(filteredMovies);
+
+  }
 
   // let [inpVal, setInpVal] = useState("");
 
@@ -28,13 +52,23 @@ function App() {
                 {" "}
                   <Banner />
                   {/* <input type="text" className="border" value={inpVal} onChange={(e) => setInpVal(e.target.value)} />  */}
-                  <Movies />
+                  <Movies 
+                    watchList={watchList}
+                    handleAddToWatchlist={handleAddToWatchlist}
+                    handleRemoveFromWatchlist={handleRemoveFromWatchlist} />
                 {" "}
               </>
             }
           />
 
-          <Route path="/watchlist" element={<WatchList />} />
+          <Route 
+            path="/watchlist" 
+            element={
+                    <WatchList
+                      watchList={watchList}
+                    />
+                    } 
+            />
         </Routes>
       </BrowserRouter>
     </>
