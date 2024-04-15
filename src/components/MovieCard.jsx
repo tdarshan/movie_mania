@@ -13,10 +13,6 @@ const MovieCard = ({title, poster, movie, handleAddToWatchlist, handleRemoveFrom
       return false;
     }
 
-    
-    
-
-
   return (
     <div 
         className="h-[40vh] w-[200px] bg-center bg-cover rounded-xl hover:cursor-pointer hover:scale-110 duration-300 flex justify-center items-end overflow-hidden relative"

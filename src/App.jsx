@@ -29,15 +29,18 @@ function App() {
     localStorage.setItem('myWatchList', JSON.stringify(filteredMovies));
     setWatchList(filteredMovies);
 
-    // console.log(filteredMovies);
 
   }
 
-  // let [inpVal, setInpVal] = useState("");
+  useEffect(() => {
+    let moviesFromLocalStorage = localStorage.getItem('myWatchList');
 
-  // useEffect( () => {
-  //   console.log("I'm running");
-  // }, [inpVal]);
+    if(!moviesFromLocalStorage){
+      return;
+    }
+
+    setWatchList(JSON.parse(moviesFromLocalStorage));
+  }, []);
 
   return (
     <>
@@ -66,6 +69,8 @@ function App() {
             element={
                     <WatchList
                       watchList={watchList}
+                      handleRemoveFromWatchlist={handleRemoveFromWatchlist}
+                      setWatchList={setWatchList}
                     />
                     } 
             />
